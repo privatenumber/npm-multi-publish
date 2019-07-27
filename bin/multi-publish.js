@@ -19,7 +19,11 @@ function isAuth(registry) {
 
 	const registries = pkg.publishConfig.map(({ registry }) => registry);
 
-	await Promise.all(registries.map(isReachable));
+	await Promise.all(registries.map(async (r) => {
+		if (!(await isReachable(r))) {
+			throw new Error(`Couldn't reach ${r}`);
+		}
+	}));
 
 	for (const registry of registries) {
 		const tempPkg = Object.assign({}, pkg, { publishConfig: { registry } });
