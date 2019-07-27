@@ -1,0 +1,27 @@
+{
+  "name": "npm-multi-publish",
+  "version": "1.0.0",
+  "description": "Publish to multiple registries with npm",
+  "bin": {
+    "multi-publish": "./bin/multi-publish.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/privatenumber/npm-multi-publish.git"
+  },
+  "author": "Hiroki Osame <hiroki.osame@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/privatenumber/npm-multi-publish/issues"
+  },
+  "homepage": "https://github.com/privatenumber/npm-multi-publish#readme",
+  "dependencies": {
+    "execa": "^2.0.3",
+    "is-reachable": "^3.1.0",
+    "prompts": "^2.1.0",
+    "write-json-file": "^4.1.1"
+  }
+}

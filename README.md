@@ -1,2 +1,2 @@
 # npm-multi-publish
-Multiple to multiple registries with npm
+Publish to multiple registries with npm
