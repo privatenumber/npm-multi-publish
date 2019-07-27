@@ -24,9 +24,9 @@ function isAuth(registry) {
 	for (const registry of registries) {
 		const tempPkg = Object.assign({}, pkg, { publishConfig: { registry } });
 
-		while(!isAuth(registry)) {
+		while (!isAuth(registry)) {
 			const { ready } = await prompts({
-    			name: 'ready',
+				name: 'ready',
 				type: 'select',
 				message: `Authentication failed for ${registry}\nPlease authenticate in a separate window`,
 				choices: [
@@ -37,7 +37,7 @@ function isAuth(registry) {
 					{
 						title: 'Exit',
 						value: 'exit',
-					}
+					},
 				],
 				initial: 0,
 			});
