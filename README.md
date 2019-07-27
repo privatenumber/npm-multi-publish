@@ -6,11 +6,11 @@ To make a private repo available in multiple private npm registries
 
 ## :rocket: Installation
 
-#### Global command
+#### Global installation
 ```sh
 $ npm i -g npm-multi-publish
 ```
-#### Dev dependency
+#### Local installation (dev dependency)
 ```sh
 $ npm i -D npm-multi-publish
 ```
@@ -43,4 +43,4 @@ Add it to your `package.json` scripts to run it as `$ npm run publish`
 }
 ```
 
-2. `$ multi-publish` if intalled globally or `$ npm run publish` if installed locally
+2. `$ multi-publish` if intalled globally, or `$ npm run publish` if installed locally
