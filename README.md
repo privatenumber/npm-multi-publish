@@ -44,3 +44,8 @@ Add it to your `package.json` scripts to run it as `$ npm run publish`
 ```
 
 2. `$ multi-publish` if intalled globally, or `$ npm run publish` if installed locally
+
+
+## :book: FAQ
+- If I have multiple `.npmrc`s configured for the respective registries, how should I toggle between?
+Check out [`npmrc`](https://www.npmjs.com/package/npmrc). When multi-publish can't authenticate with a registry, it will wait for you to authenticate (eg. by toggling your npmrc or by logging in).
