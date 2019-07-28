@@ -8,8 +8,11 @@ const execa = require('execa');
 const prompts = require('prompts');
 
 const isAuth = async (registry) => {
-	const { output: whoami } = await execa('npm', ['whoami', '--registry', registry]);
-	return whoami[1].toString().trim();
+	const { stdout: whoami } = await execa(
+		'npm', ['whoami', '--registry', registry],
+		{ timeout: 5000 }
+	).catch(e => e);
+	return whoami;
 };
 
 (async () => {
@@ -17,7 +20,7 @@ const isAuth = async (registry) => {
 	const pkg = require(pkgPath);
 	const { publishConfig } = pkg;
 
-	assert(Array.isArray(publishConfig) && publishConfig.length > 1, 'You only have one registry. Use `npm publish`');
+	// assert(Array.isArray(publishConfig) && publishConfig.length > 1, 'You must have multiple registries defined in `publishConfig`');
 
 	const registries = publishConfig.map(({ registry }) => registry);
 
@@ -28,7 +31,7 @@ const isAuth = async (registry) => {
 	for (const registry of registries) {
 		const tempPkg = Object.assign({}, pkg, { publishConfig: { registry } });
 
-		while (!isAuth(registry)) {
+		while (!(await isAuth(registry))) {
 			const { ready } = await prompts({
 				name: 'ready',
 				type: 'select',
@@ -53,11 +56,7 @@ const isAuth = async (registry) => {
 
 		console.log('Publishing to', registry);
 		await writeJsonFile(pkgPath, tempPkg, { detectIndent: true });
-
-		await execa('npm', ['publish'], {
-			stdio: 'inherit',
-			shell: true,
-		});
+		await execa('npm', ['publish'], { stdio: 'inherit' });
 	}
 
 	await writeJsonFile(pkgPath, pkg, { detectIndent: true });
