@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/privatenumber/npm-multi-publish#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
     "execa": "^2.0.3",
     "is-reachable": "^3.1.0",
     "prompts": "^2.1.0",
