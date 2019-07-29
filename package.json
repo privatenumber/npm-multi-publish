@@ -2,6 +2,12 @@
   "name": "npm-multi-publish",
   "version": "1.0.0",
   "description": "Publish to multiple npm registries",
+  "keywords": [
+    "multiple registries",
+    "multi",
+    "publish",
+    "multi publish"
+  ],
   "bin": {
     "multi-publish": "./bin/multi-publish.js"
   },
