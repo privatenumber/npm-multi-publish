@@ -16,12 +16,12 @@ $ npm i -g npm-multi-publish
 $ npm i -D npm-multi-publish
 ```
 
-Add it to your `package.json` scripts to run it as `$ npm run publish`
+Add it to your `package.json` scripts to run it as `$ npm run multi-publish` (be careful not to call it `publish` as it's a [hook](https://docs.npmjs.com/misc/scripts#description))
 ```json
 {
   ...
   "scripts": {
-    "publish": "multi-publish"
+    "multi-publish": "multi-publish"
   },
   ...
 } 
@@ -44,7 +44,7 @@ Add it to your `package.json` scripts to run it as `$ npm run publish`
 }
 ```
 
-2. `$ multi-publish` if intalled globally, or `$ npm run publish` if installed locally
+2. `$ multi-publish` if intalled globally, or `$ npm run multi-publish` if installed locally
 
 ## :book: FAQ
 - _Is it possible to authenticate to multiple npm registries with one `.npmrc`?_
