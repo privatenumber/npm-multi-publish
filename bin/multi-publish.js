@@ -20,7 +20,7 @@ const isAuth = async (registry) => {
 	const pkg = require(pkgPath);
 	const { publishConfig } = pkg;
 
-	// assert(Array.isArray(publishConfig) && publishConfig.length > 1, 'You must have multiple registries defined in `publishConfig`');
+	assert(Array.isArray(publishConfig) && publishConfig.length > 1, 'You must have multiple registries defined in `publishConfig`');
 
 	const registries = publishConfig.map(({ registry }) => registry);
 
