@@ -1,4 +1,5 @@
-# <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg" height="20"> multi-publish
+# <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg" height="20"> multi-publish	<a href="https://npm.im/npm-multi-publish"><img src="https://badgen.net/npm/v/npm-multi-publish"></a>
+
 > Publish a package to multiple npm registries
 
 ## :raised_hand: Why?
