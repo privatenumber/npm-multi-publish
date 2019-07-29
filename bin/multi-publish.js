@@ -1,34 +1,37 @@
 #!/usr/bin/env node
 
 const path = require('path');
+const assert = require('assert');
 const isReachable = require('is-reachable');
 const writeJsonFile = require('write-json-file');
-const { spawnSync } = require('child_process');
+const execa = require('execa');
 const prompts = require('prompts');
 
-function isAuth(registry) {
-	const { output: whoami } = spawnSync('npm', ['whoami', '--registry', registry]);
-	return whoami[1].toString().trim();
-}
+const isAuth = async (registry) => {
+	const { stdout: whoami } = await execa(
+		'npm', ['whoami', '--registry', registry],
+		{ timeout: 5000 }
+	).catch(e => e);
+	return whoami;
+};
 
 (async () => {
 	const pkgPath = path.resolve('./package.json');
 	const pkg = require(pkgPath);
+	const { publishConfig } = pkg;
 
-	console.assert(Array.isArray(pkg.publishConfig), 'You only have one registry. Use `npm publish`');
+	assert(Array.isArray(publishConfig) && publishConfig.length > 1, 'You must have multiple registries defined in `publishConfig`');
 
-	const registries = pkg.publishConfig.map(({ registry }) => registry);
+	const registries = publishConfig.map(({ registry }) => registry);
 
-	await Promise.all(registries.map(async (r) => {
-		if (!(await isReachable(r))) {
-			throw new Error(`Couldn't reach ${r}`);
-		}
-	}));
+	await Promise.all(registries.map(async (r) =>
+		assert(await isReachable(r), `Couldn't reach ${r}`)
+	));
 
 	for (const registry of registries) {
 		const tempPkg = Object.assign({}, pkg, { publishConfig: { registry } });
 
-		while (!isAuth(registry)) {
+		while (!(await isAuth(registry))) {
 			const { ready } = await prompts({
 				name: 'ready',
 				type: 'select',
@@ -53,12 +56,8 @@ function isAuth(registry) {
 
 		console.log('Publishing to', registry);
 		await writeJsonFile(pkgPath, tempPkg, { detectIndent: true });
-
-		spawnSync('npm', ['publish'], {
-			stdio: 'inherit',
-			shell: true,
-		});
+		await execa('npm', ['publish'], { stdio: 'inherit' }).catch(console.error);
 	}
 
 	await writeJsonFile(pkgPath, pkg, { detectIndent: true });
-})();
+})().catch(console.error);
