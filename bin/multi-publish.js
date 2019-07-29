@@ -56,7 +56,7 @@ const isAuth = async (registry) => {
 
 		console.log('Publishing to', registry);
 		await writeJsonFile(pkgPath, tempPkg, { detectIndent: true });
-		await execa('npm', ['publish'], { stdio: 'inherit' });
+		await execa('npm', ['publish'], { stdio: 'inherit' }).catch(console.error);
 	}
 
 	await writeJsonFile(pkgPath, pkg, { detectIndent: true });
