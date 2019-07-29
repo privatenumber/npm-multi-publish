@@ -6,6 +6,7 @@ const isReachable = require('is-reachable');
 const writeJsonFile = require('write-json-file');
 const execa = require('execa');
 const prompts = require('prompts');
+const chalk = require('chalk');
 
 const isAuth = async (registry) => {
 	const { stdout: whoami } = await execa(
@@ -54,7 +55,7 @@ const isAuth = async (registry) => {
 			}
 		}
 
-		console.log('Publishing to', registry);
+		console.log('\nmulti-publish', chalk.blue.bold('Publishing to'), chalk.green.underline(registry));
 		await writeJsonFile(pkgPath, tempPkg, { detectIndent: true });
 		await execa('npm', ['publish'], { stdio: 'inherit' }).catch(console.error);
 	}
