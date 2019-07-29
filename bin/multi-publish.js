@@ -11,7 +11,7 @@ const chalk = require('chalk');
 const isAuth = async (registry) => {
 	const { stdout: whoami } = await execa(
 		'npm', ['whoami', '--registry', registry],
-		{ timeout: 5000 }
+		{ timeout: 5000 },
 	).catch(e => e);
 	return whoami;
 };
