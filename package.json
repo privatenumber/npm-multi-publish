@@ -1,7 +1,7 @@
 {
 	"name": "npm-multi-publish",
 	"version": "0.0.0-semantic-release",
-	"description": "Publish a npm package to multiple registries",
+	"description": "Publish an npm package to multiple registries",
 	"keywords": [
 		"cli",
 		"publish",
@@ -20,7 +20,6 @@
 		"bin/cli.js",
 		"lib"
 	],
-	"main": "lib/npm-multi-publish.js",
 	"bin": "bin/cli.js",
 	"scripts": {
 		"lint": "xo"
