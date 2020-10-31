@@ -34,11 +34,12 @@
 		"*.js": "xo"
 	},
 	"dependencies": {
-		"meow": "^8.0.0",
+		"graceful-fs": "^4.2.4",
 		"is-reachable": "^5.0.0",
+		"meow": "^8.0.0",
 		"pacote": "^11.1.11",
 		"prompts": "^2.4.0",
-		"write-pkg": "^4.0.0"
+		"write-json-file": "^4.3.0"
 	},
 	"devDependencies": {
 		"husky": "^4.3.0",
