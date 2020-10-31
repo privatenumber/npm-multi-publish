@@ -1,56 +1,35 @@
-# <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg" height="20"> multi-publish	<a href="https://npm.im/npm-multi-publish"><img src="https://badgen.net/npm/v/npm-multi-publish"></a>
+# npm-multi-publish [![Latest version](https://badgen.net/npm/v/npm-multi-publish)](https://npm.im/npm-multi-publish) [![Monthly downloads](https://badgen.net/npm/dm/npm-multi-publish)](https://npm.im/npm-multi-publish) [![Install size](https://packagephobia.now.sh/badge?p=npm-multi-publish)](https://packagephobia.now.sh/result?p=npm-multi-publish)
 
-> Publish a package to multiple npm registries
+Publish a npm package to multiple registries
 
-## :raised_hand: Why?
-To make a private repo available in multiple private npm registries
+## 🙋‍♂️ Why?
+- **🔥 Hot** Too hot! 
+- **⚡️ Blazing fast** Can't keep up!
+- **🙌 Awesome support** Best in the world!
 
-## :rocket: Installation
-
-#### Global installation
+## 🚀 Install
 ```sh
-$ npm i -g npm-multi-publish
-```
-#### Local installation (dev dependency)
-```sh
-$ npm i -D npm-multi-publish
+npm i -D npm-multi-publish
 ```
 
-Add it to your `package.json` scripts to run it as `$ npm run multi-publish` (be careful not to call it `publish` as it's a [hook](https://docs.npmjs.com/misc/scripts#description))
-```json
-{
-  ...
-  "scripts": {
-    "multi-publish": "multi-publish"
-  },
-  ...
-} 
-```
+## 🚦 Quick Setup
 
-## :beginner: Setup
-1. In your `package.json`, use [`publishConfig`](https://docs.npmjs.com/files/package.json#publishconfig) as an array to define the respective registries 
-```json
-{
-  ...
-  "publishConfig": [
-    {
-      "registry": "..."
-    },
-    {
-      "registry": "..."
-    }
-  ],
-  ...
-}
-```
 
-2. `$ multi-publish` if intalled globally, or `$ npm run multi-publish` if installed locally
+## 👨🏻‍🏫 Examples
 
-## :book: FAQ
-- _Is it possible to authenticate to multiple npm registries with one `.npmrc`?_
 
-  Yes. Login to a specific registry via `$ npm login --registry=https://registry.company-name.npme.io`. Learn more [here](https://docs.npmjs.com/logging-in-to-an-npm-enterprise-registry-from-the-command-line#logging-in-with-a-scope-configured-to-point-to-an-npm-enterprise-registry). You can check if you're already authenticated to a registry via `$ npm whoami --registry=https://registry.company-name.npme.io`. If you have certs for the respective registries, you can [add multiple certs in your `npmrc` file](https://docs.npmjs.com/misc/config#ca).
+## ⚙️ Options
 
-- _If I have multiple `.npmrc`s configured for the respective registries, how should I toggle between?_
 
-  Check out [`npmrc`](https://www.npmjs.com/package/npmrc). When multi-publish can't authenticate with a registry, it will wait for you to authenticate (eg. by toggling your npmrc or by logging in).
+## 💁‍♀️ FAQ
+
+## 👨‍💻 Need help?
+Open an issue describing your problem and how I can help!
+
+## ❤️ Show support
+If you like this project, give it a Star! ⭐️
+
+It helps me measure popularity and demand, and will also help popularize it so more people can learn and potentially benefit from it!
+
+
+Add issues template
