@@ -4,9 +4,9 @@
 
 const prepublishOnly = require('../lib/prepublish-only');
 const postpublish = require('../lib/postpublish');
+const {Exit} = require('../lib/utils');
 
 const {npm_lifecycle_event: lifeCycleEvent} = process.env;
-const {Exit} = require('../lib/utils');
 
 (async () => {
 	if (lifeCycleEvent === 'prepublishOnly') {
