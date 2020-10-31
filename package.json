@@ -34,15 +34,15 @@
 		"*.js": "xo"
 	},
 	"dependencies": {
-		"meow": "^8.0.0"
+		"meow": "^8.0.0",
+		"is-reachable": "^5.0.0",
+		"pacote": "^11.1.11",
+		"prompts": "^2.4.0",
+		"write-pkg": "^4.0.0"
 	},
 	"devDependencies": {
 		"husky": "^4.3.0",
-		"is-reachable": "^5.0.0",
 		"lint-staged": "^10.5.0",
-		"pacote": "^11.1.11",
-		"prompts": "^2.4.0",
-		"write-pkg": "^4.0.0",
 		"xo": "^0.34.1"
 	}
 }
