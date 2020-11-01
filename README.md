@@ -13,6 +13,7 @@ npm i -D npm-multi-publish
 ```
 
 ## 🚦 Quick Setup
+
 Add `npm-multi-publish` to your `package.json` `prepublishOnly` and `postpublish` hooks, and convert `publishConfig` into an array of configs:
 
 ```diff
@@ -39,6 +40,10 @@ Add `npm-multi-publish` to your `package.json` `prepublishOnly` and `postpublish
 ```
 
 If using [Lerna](https://lerna.js.org/), add this configuration to the respective `package.json` of each package in the monorepo (not necessary in the root `package.json`).
+
+
+That's it! Next time you run `npm publish` or `yarn publish` it will automatically publish to all registries configured in your `package.json` `publishConfig` array.
+
 
 ## 💁‍♀️ FAQ
 
