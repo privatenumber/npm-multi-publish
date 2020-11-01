@@ -38,6 +38,8 @@ Add `npm-multi-publish` to your `package.json` `prepublishOnly` and `postpublish
   }
 ```
 
+If using [Lerna](https://lerna.js.org/), add this configuration to the respective `package.json` of each package in the monorepo (not necessary in the root `package.json`).
+
 ## 💁‍♀️ FAQ
 
 ### Is it possible to authenticate to multiple npm registries with one `.npmrc`?
@@ -63,3 +65,20 @@ If you have certs for the respective registries, you can [add multiple certs to 
 
 Use [`npmrc`](https://www.npmjs.com/package/npmrc). When `npm-multi-publish` can't authenticate with a registry, it will wait for you to authenticate (eg. by toggling your npmrc or by logging in).
 
+
+### How can I test publishing to a registry?
+Use [`@pnpm/registry-mock`](https://github.com/pnpm/registry-mock/) to create a mock registry.
+
+Set up a server directory:
+
+```sh
+$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock prepare
+```
+
+Start the server:
+
+```sh
+$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock
+```
+
+Use a different port to instantiate multiple test registries.
