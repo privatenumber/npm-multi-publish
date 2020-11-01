@@ -1,56 +1,89 @@
-# <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg" height="20"> multi-publish	<a href="https://npm.im/npm-multi-publish"><img src="https://badgen.net/npm/v/npm-multi-publish"></a>
+# npm-multi-publish [![Latest version](https://badgen.net/npm/v/npm-multi-publish)](https://npm.im/npm-multi-publish) [![Monthly downloads](https://badgen.net/npm/dm/npm-multi-publish)](https://npm.im/npm-multi-publish) [![Install size](https://packagephobia.now.sh/badge?p=npm-multi-publish)](https://packagephobia.now.sh/result?p=npm-multi-publish)
 
-> Publish a package to multiple npm registries
+Publish an npm package to multiple registries
 
-## :raised_hand: Why?
-To make a private repo available in multiple private npm registries
+## 🙋‍♂️ Why?
+- **🔥 High Compatibility** Works with anything that uses `npm publish` or `yarn publish`!
+- **⚡️ Easy setup** Just add it to your npm publish hooks!
+- **🙌 Streamlined** Publishes to all registries in one `npm publish`!
 
-## :rocket: Installation
-
-#### Global installation
+## 🚀 Install
 ```sh
-$ npm i -g npm-multi-publish
+npm i -D npm-multi-publish
 ```
-#### Local installation (dev dependency)
+
+## 🚦 Quick Setup
+
+Add `npm-multi-publish` to your `package.json` `prepublishOnly` and `postpublish` hooks, and convert `publishConfig` into an array of configs:
+
+```diff
+  {
+      ...,
+
+      "scripts": {
++         "prepublishOnly": "npm-multi-publish",
++         "postpublish": "npm-multi-publish"
+      },
+
+      "publishConfig": [
++         {
++             "registry": "Registry URL 1"
++         },
++         {
++             "registry": "Registry URL 2"
++         },
++         ...
+      ],
+
+      ...
+  }
+```
+
+If using [Lerna](https://lerna.js.org/), add this configuration to the respective `package.json` of each package in the monorepo (not necessary in the root `package.json`).
+
+
+That's it! Next time you run `npm publish` or `yarn publish` it will automatically publish to all registries configured in your `package.json` `publishConfig` array.
+
+
+## 💁‍♀️ FAQ
+
+### Is it possible to authenticate to multiple npm registries with one `.npmrc`?
+
+[Yes](https://docs.npmjs.com/logging-in-to-an-npm-enterprise-registry-from-the-command-line#logging-in-with-a-scope-configured-to-point-to-an-npm-enterprise-registry).
+
+To login to an enterprise/custom registry:
+
 ```sh
-$ npm i -D npm-multi-publish
+$ npm login --registry=https://registry.company-name.npme.io
 ```
 
-Add it to your `package.json` scripts to run it as `$ npm run multi-publish` (be careful not to call it `publish` as it's a [hook](https://docs.npmjs.com/misc/scripts#description))
-```json
-{
-  ...
-  "scripts": {
-    "multi-publish": "multi-publish"
-  },
-  ...
-} 
+To verify authentication on a specific registry:
+
+```sh
+$ npm whoami --registry=https://registry.company-name.npme.io
 ```
 
-## :beginner: Setup
-1. In your `package.json`, use [`publishConfig`](https://docs.npmjs.com/files/package.json#publishconfig) as an array to define the respective registries 
-```json
-{
-  ...
-  "publishConfig": [
-    {
-      "registry": "..."
-    },
-    {
-      "registry": "..."
-    }
-  ],
-  ...
-}
+If you have certs for the respective registries, you can [add multiple certs to your `.npmrc` file](https://docs.npmjs.com/misc/config#ca).
+
+
+### How can I manage `.npmrc`s configured for multiple registries?
+
+Use [`npmrc`](https://www.npmjs.com/package/npmrc). When `npm-multi-publish` can't authenticate with a registry, it will wait for you to authenticate (eg. by toggling your npmrc or by logging in).
+
+
+### How can I test publishing to a registry?
+Use [`@pnpm/registry-mock`](https://github.com/pnpm/registry-mock/) to create a mock registry.
+
+Set up a server directory:
+
+```sh
+$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock prepare
 ```
 
-2. `$ multi-publish` if intalled globally, or `$ npm run multi-publish` if installed locally
+Start the server:
 
-## :book: FAQ
-- _Is it possible to authenticate to multiple npm registries with one `.npmrc`?_
+```sh
+$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock
+```
 
-  Yes. Login to a specific registry via `$ npm login --registry=https://registry.company-name.npme.io`. Learn more [here](https://docs.npmjs.com/logging-in-to-an-npm-enterprise-registry-from-the-command-line#logging-in-with-a-scope-configured-to-point-to-an-npm-enterprise-registry). You can check if you're already authenticated to a registry via `$ npm whoami --registry=https://registry.company-name.npme.io`. If you have certs for the respective registries, you can [add multiple certs in your `npmrc` file](https://docs.npmjs.com/misc/config#ca).
-
-- _If I have multiple `.npmrc`s configured for the respective registries, how should I toggle between?_
-
-  Check out [`npmrc`](https://www.npmjs.com/package/npmrc). When multi-publish can't authenticate with a registry, it will wait for you to authenticate (eg. by toggling your npmrc or by logging in).
+Use a different port to instantiate multiple test registries.

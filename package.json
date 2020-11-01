@@ -1,43 +1,48 @@
 {
-  "name": "npm-multi-publish",
-  "version": "1.0.0",
-  "description": "Publish to multiple npm registries",
-  "keywords": [
-    "multiple registries",
-    "multi",
-    "publish",
-    "multi publish"
-  ],
-  "bin": {
-    "multi-publish": "./bin/multi-publish.js"
-  },
-  "files": [
-    "bin"
-  ],
-  "scripts": {
-    "lint": "eslint bin",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/privatenumber/npm-multi-publish.git"
-  },
-  "author": "Hiroki Osame <hiroki.osame@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/privatenumber/npm-multi-publish/issues"
-  },
-  "homepage": "https://github.com/privatenumber/npm-multi-publish#readme",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "execa": "^2.0.3",
-    "is-reachable": "^3.1.0",
-    "prompts": "^2.1.0",
-    "write-json-file": "^4.1.1"
-  },
-  "devDependencies": {
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2"
-  }
+	"name": "npm-multi-publish",
+	"version": "0.0.0-semantic-release",
+	"description": "Publish an npm package to multiple registries",
+	"keywords": [
+		"cli",
+		"publish",
+		"multiple",
+		"registries",
+		"artifactory"
+	],
+	"license": "MIT",
+	"repository": "privatenumber/npm-multi-publish",
+	"funding": "https://github.com/privatenumber/npm-multi-publish?sponsor=1",
+	"author": {
+		"name": "Hiroki Osame",
+		"email": "hiroki.osame@gmail.com"
+	},
+	"files": [
+		"bin/cli.js",
+		"lib"
+	],
+	"bin": "bin/cli.js",
+	"scripts": {
+		"lint": "xo"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.js": "xo"
+	},
+	"dependencies": {
+		"graceful-fs": "^4.2.4",
+		"is-reachable": "^5.0.0",
+		"meow": "^8.0.0",
+		"pacote": "^11.1.11",
+		"prompts": "^2.4.0",
+		"write-json-file": "^4.3.0"
+	},
+	"devDependencies": {
+		"husky": "^4.3.0",
+		"lint-staged": "^10.5.0",
+		"xo": "^0.34.1"
+	}
 }
