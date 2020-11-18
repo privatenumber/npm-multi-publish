@@ -72,18 +72,26 @@ Use [`npmrc`](https://www.npmjs.com/package/npmrc). When `npm-multi-publish` can
 
 
 ### How can I test publishing to a registry?
-Use [`@pnpm/registry-mock`](https://github.com/pnpm/registry-mock/) to create a mock registry.
+Use [`verdaccio`](https://github.com/verdaccio/verdaccio) to create a mock npm registry.
 
-Set up a server directory:
-
-```sh
-$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock prepare
-```
-
-Start the server:
+Install and start the verdaccio server:
 
 ```sh
-$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock
+$ npm i -g verdaccio
+$ verdaccio
 ```
 
-Use a different port to instantiate multiple test registries.
+In a separate terminal window, configure npm to use your verdaccio server. I recommend using [`npmrc`](https://www.npmjs.com/package/npmrc) to create a new npmrc for the "verdaccio" profile so your default npmrc isn't polluted and so you can switch to it easily in the future:
+
+```sh
+$ npmrc -c verdaccio # (Optional) Create a new .npmrc not to pollute existing ones
+$ npm set registry http://localhost:4873 # Set default registry
+$ npm adduser --registry http://localhost:4873 # Login to registry
+```
+
+After your package is test published to verdaccio, you can confirm the contents with:
+
+```sh
+$ npm pack <package-name> # Pass in a registry via --registry if you switched npmrcs
+```
+
