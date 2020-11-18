@@ -72,13 +72,13 @@ Use [`npmrc`](https://www.npmjs.com/package/npmrc). When `npm-multi-publish` can
 
 
 ### How can I test publishing to a registry?
-Use [`verdaccio`](https://github.com/verdaccio/verdaccio) to create a mock npm registry.
+Use [`verdaccio`](https://github.com/verdaccio/verdaccio) to create a local mock npm registry.
 
 Install and start the verdaccio server:
 
 ```sh
 $ npm i -g verdaccio
-$ verdaccio
+$ verdaccio # Start server
 ```
 
 In a separate terminal window, configure npm to use your verdaccio server. I recommend using [`npmrc`](https://www.npmjs.com/package/npmrc) to create a new npmrc for the "verdaccio" profile so your default npmrc isn't polluted and so you can switch to it easily in the future:
@@ -89,9 +89,13 @@ $ npm set registry http://localhost:4873 # Set default registry
 $ npm adduser --registry http://localhost:4873 # Login to registry
 ```
 
-After your package is test published to verdaccio, you can confirm the contents with:
+Now you can test publishing.
+
+After your package is test-published to verdaccio, you can confirm the contents with:
 
 ```sh
 $ npm pack <package-name> # Pass in a registry via --registry if you switched npmrcs
 ```
+
+You can also see it via their Web UI at http://localhost:4873 (or any other port it's listening on).
 
