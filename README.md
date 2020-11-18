@@ -91,11 +91,5 @@ $ npm adduser --registry http://localhost:4873 # Login to registry
 
 Now you can test publishing.
 
-After your package is test-published to verdaccio, you can confirm the contents with:
-
-```sh
-$ npm pack <package-name> # Pass in a registry via --registry if you switched npmrcs
-```
-
-You can also see it via their Web UI at http://localhost:4873 (or any other port it's listening on).
+After your package is test-published to verdaccio, you can confirm the contents via their Web UI at http://localhost:4873 (or any other port it's listening on).
 
