@@ -2,10 +2,14 @@
 
 Publish an npm package to multiple registries
 
-## 🙋‍♂️ Why?
-- **🔥 High Compatibility** Works with anything that uses `npm publish` or `yarn publish`!
-- **⚡️ Easy setup** Just add it to your npm publish hooks!
+### Features
 - **🙌 Streamlined** Publishes to all registries in one `npm publish`!
+- **🔥 High compatibility** Works with anything that uses `npm publish` (eg. monorepo)!
+- **⚡️ Easy setup** Just add it to your npm publish hooks!
+- **🛡 VPN conscious** Waits for you to switch VPNs if registry is unreachable!
+
+<sub>Support this project by ⭐️ starring and sharing it. [Follow me](https://github.com/privatenumber) to see what other cool projects I'm working on! ❤️</sub>
+
 
 ## 🚀 Install
 ```sh
