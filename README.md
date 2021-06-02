@@ -18,7 +18,9 @@ npm i -D npm-multi-publish
 
 ## 🚦 Quick Setup
 
-Add `npm-multi-publish` to your `package.json` `prepublishOnly` and `postpublish` hooks, and convert `publishConfig` into an array of configs:
+1. Open `package.json`
+2. Add `npm-multi-publish` to the `prepublishOnly` and `postpublish` hooks
+3. Convert `publishConfig` into an array of configs
 
 ```diff
   {
