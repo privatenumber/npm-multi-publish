@@ -2,10 +2,14 @@
 
 Publish an npm package to multiple registries
 
-## 🙋‍♂️ Why?
-- **🔥 High Compatibility** Works with anything that uses `npm publish` or `yarn publish`!
-- **⚡️ Easy setup** Just add it to your npm publish hooks!
+### Features
 - **🙌 Streamlined** Publishes to all registries in one `npm publish`!
+- **🔥 High compatibility** Works with anything that uses `npm publish` (eg. monorepo)!
+- **⚡️ Easy setup** Just add it to your npm publish hooks!
+- **🛡 VPN conscious** Waits for you to switch VPNs if registry is unreachable!
+
+<sub>Support this project by ⭐️ starring and sharing it. [Follow me](https://github.com/privatenumber) to see what other cool projects I'm working on! ❤️</sub>
+
 
 ## 🚀 Install
 ```sh
@@ -14,7 +18,9 @@ npm i -D npm-multi-publish
 
 ## 🚦 Quick Setup
 
-Add `npm-multi-publish` to your `package.json` `prepublishOnly` and `postpublish` hooks, and convert `publishConfig` into an array of configs:
+1. Open `package.json`
+2. Add `npm-multi-publish` to the `prepublishOnly` and `postpublish` hooks
+3. Convert `publishConfig` into an array of configs
 
 ```diff
   {
@@ -72,18 +78,24 @@ Use [`npmrc`](https://www.npmjs.com/package/npmrc). When `npm-multi-publish` can
 
 
 ### How can I test publishing to a registry?
-Use [`@pnpm/registry-mock`](https://github.com/pnpm/registry-mock/) to create a mock registry.
+Use [`verdaccio`](https://github.com/verdaccio/verdaccio) to create a local mock npm registry.
 
-Set up a server directory:
-
-```sh
-$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock prepare
-```
-
-Start the server:
+Install and start the verdaccio server:
 
 ```sh
-$ PNPM_REGISTRY_MOCK_PORT=4873 registry-mock
+$ npm i -g verdaccio
+$ verdaccio # Start server
 ```
 
-Use a different port to instantiate multiple test registries.
+In a separate terminal window, configure npm to use your verdaccio server. I recommend using [`npmrc`](https://www.npmjs.com/package/npmrc) to create a new npmrc for the "verdaccio" profile so your default npmrc isn't polluted and so you can switch to it easily in the future:
+
+```sh
+$ npmrc -c verdaccio # (Optional) Create a new .npmrc not to pollute existing ones
+$ npm set registry http://localhost:4873 # Set default registry
+$ npm adduser --registry http://localhost:4873 # Login to registry
+```
+
+Now you can test publishing.
+
+After your package is test-published to verdaccio, you can confirm the contents via their Web UI at http://localhost:4873 (or any other port it's listening on).
+

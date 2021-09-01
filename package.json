@@ -34,8 +34,8 @@
 	},
 	"dependencies": {
 		"graceful-fs": "^4.2.4",
-		"is-reachable": "^5.0.0",
 		"meow": "^8.0.0",
+		"npm-registry-fetch": "^11.0.0",
 		"pacote": "^11.1.11",
 		"prompts": "^2.4.0",
 		"write-json-file": "^4.3.0"
