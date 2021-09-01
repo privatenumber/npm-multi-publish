@@ -6,6 +6,7 @@ specifiers:
   is-reachable: ^5.0.0
   lint-staged: ^10.5.0
   meow: ^8.0.0
+  npm-registry-fetch: ^11.0.0
   pacote: ^11.1.11
   prompts: ^2.4.0
   write-json-file: ^4.3.0
@@ -15,6 +16,7 @@ dependencies:
   graceful-fs: 4.2.8
   is-reachable: 5.0.0
   meow: 8.1.2
+  npm-registry-fetch: 11.0.0
   pacote: 11.3.5
   prompts: 2.4.1
   write-json-file: 4.3.0
