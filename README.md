@@ -50,12 +50,12 @@ If using [Lerna](https://lerna.js.org/), add this configuration to the respectiv
 
 That's it! Next time you run `npm publish` or `yarn publish` it will automatically publish to all registries configured in your `package.json` `publishConfig` array.
 
-If the registries require authentication, make sure you authenticate with them all using a single `.npmrc` file (toggling via `npmrc` will not work).
+If the registries require authentication, make sure you authenticate with them all using a single `.npmrc` file (toggling via [`npmrc`](https://www.npmjs.com/package/npmrc) will not work).
 
 
 ## 💁‍♀️ FAQ
 
-### Is it possible to authenticate to multiple npm registries with one `.npmrc`?
+### Is it possible to authenticate to multiple npm registries with one `.npmrc` file?
 
 [Yes](https://docs.npmjs.com/logging-in-to-an-npm-enterprise-registry-from-the-command-line#logging-in-with-a-scope-configured-to-point-to-an-npm-enterprise-registry). This is actually the preferred way because `npm publish` loads the `.npmrc` file at the beginning, so toggling `.npmrc` files via [`npmrc`](https://www.npmjs.com/package/npmrc) during publish (even in npm-multi-publish) does not take effect.
 
@@ -79,11 +79,6 @@ A `.npmrc` file authenticated with multiple registries should include something 
 ```
 
 If you have certs for the respective registries, you can [add multiple certs to your `.npmrc` file](https://docs.npmjs.com/misc/config#ca).
-
-### How can I manage `.npmrc`s configured for multiple registries?
-
-Use [`npmrc`](https://www.npmjs.com/package/npmrc). When `npm-multi-publish` can't authenticate with a registry, it will wait for you to authenticate (eg. by toggling your npmrc or by logging in). While this is an option, note that npm actually won't re-read your `.npmrc` file so it's best to add multiple authentications to a single file.
-
 
 ### How can I test publishing to a registry?
 Use [`verdaccio`](https://github.com/verdaccio/verdaccio) to create a local mock npm registry.
