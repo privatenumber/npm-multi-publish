@@ -21,10 +21,10 @@ let state;
 
 	if (lifeCycleEvent === 'prepublishOnly') {
 		await prepublishOnly(state);
-	}
-
-	if (lifeCycleEvent === 'postpublish') {
+	} else if (lifeCycleEvent === 'postpublish') {
 		await postpublish(state);
+	} else if (state) { // Called independently without publish hook - cleanup command for failed publish
+		await restorePkg(state);
 	}
 })().catch(async error => {
 	if (state) {
