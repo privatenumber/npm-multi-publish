@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  exit-hook: ^2.2.1
   graceful-fs: ^4.2.4
   husky: ^4.3.0
   lint-staged: ^10.5.0
@@ -12,6 +13,7 @@ specifiers:
   xo: ^0.34.1
 
 dependencies:
+  exit-hook: 2.2.1
   graceful-fs: 4.2.8
   meow: 8.1.2
   npm-registry-fetch: 11.0.0
@@ -1853,6 +1855,11 @@ packages:
       signal-exit: 3.0.3
       strip-final-newline: 2.0.0
     dev: true
+
+  /exit-hook/2.2.1:
+    resolution: {integrity: sha512-eNTPlAD67BmP31LDINZ3U7HSF8l57TxOY2PmBJ1shpCvpnxBF93mWCE8YHBnXs8qiUZJc9WDcWIeC3a2HIAMfw==}
+    engines: {node: '>=6'}
+    dev: false
 
   /expand-brackets/2.1.4:
     resolution: {integrity: sha1-t3c14xXOMPa27/D4OwQVGiJEliI=}

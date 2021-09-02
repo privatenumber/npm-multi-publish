@@ -3,6 +3,7 @@
 'use strict';
 
 const {existsSync} = require('fs');
+const exitHook = require('exit-hook');
 const prepublishOnly = require('../lib/prepublish-only');
 const postpublish = require('../lib/postpublish');
 const {
@@ -11,6 +12,9 @@ const {
 	restorePkg,
 	Exit,
 } = require('../lib/utils');
+
+// Ctrl+C to block publish
+exitHook(() => process.exit(1));
 
 const {npm_lifecycle_event: lifeCycleEvent} = process.env;
 

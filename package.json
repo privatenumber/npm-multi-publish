@@ -33,6 +33,7 @@
 		"*.js": "xo"
 	},
 	"dependencies": {
+		"exit-hook": "^2.2.1",
 		"graceful-fs": "^4.2.4",
 		"meow": "^8.0.0",
 		"npm-registry-fetch": "^11.0.0",
