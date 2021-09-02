@@ -38,6 +38,7 @@
 		"npm-registry-fetch": "^11.0.0",
 		"pacote": "^11.1.11",
 		"prompts": "^2.4.0",
+		"rc": "^1.2.8",
 		"write-json-file": "^4.3.0"
 	},
 	"devDependencies": {
