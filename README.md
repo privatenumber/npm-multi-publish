@@ -1,3 +1,8 @@
+> ⚠️ **DEPRECATED**
+> 
+> This project does not work expectedly with npm v6, and is no longer maintained.
+> Instead, I recommend using [npm-registry-sync](https://github.com/privatenumber/npm-registry-sync) to keep two registries in sync.
+
 # npm-multi-publish [![Latest version](https://badgen.net/npm/v/npm-multi-publish)](https://npm.im/npm-multi-publish) [![Monthly downloads](https://badgen.net/npm/dm/npm-multi-publish)](https://npm.im/npm-multi-publish) [![Install size](https://packagephobia.now.sh/badge?p=npm-multi-publish)](https://packagephobia.now.sh/result?p=npm-multi-publish)
 
 Publish an npm package to multiple registries
